@@ -40,8 +40,8 @@ int main(int argc, const char *argv[]) try
     RouteParameters params;
 
     // Route in monaco
-    params.coordinates.push_back({util::FloatLongitude(7.419758), util::FloatLatitude(43.731142)});
-    params.coordinates.push_back({util::FloatLongitude(7.419505), util::FloatLatitude(43.736825)});
+    params.coordinates.push_back({util::FloatLongitude(11.378231048583984), util::FloatLatitude(48.1789071002632)});
+    params.coordinates.push_back({util::FloatLongitude(11.715238399999976), util::FloatLatitude(48.1138828)});
 
     // Response is in JSON format
     json::Object result;
