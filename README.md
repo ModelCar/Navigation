@@ -16,4 +16,5 @@ __Download & extract the map__
 mkdir map && cd map
 wget http://download.geofabrik.de/europe/germany/bayern/oberbayern-latest.osm.pbf
 osrm-extract -p ../profiles/car.lua oberbayern-latest.osm.pbf
+osrm-contract oberbayern-latest.osrm
 ```
