@@ -42,6 +42,7 @@ int main(int argc, const char *argv[]) try
     // Route in monaco
     params.coordinates.push_back({util::FloatLongitude(11.378231048583984), util::FloatLatitude(48.1789071002632)});
     params.coordinates.push_back({util::FloatLongitude(11.715238399999976), util::FloatLatitude(48.1138828)});
+    params.steps = true;
 
     // Response is in JSON format
     json::Object result;
@@ -57,6 +58,17 @@ int main(int argc, const char *argv[]) try
         auto &route = routes.values.at(0).get<json::Object>();
         const auto distance = route.values["distance"].get<json::Number>().value;
         const auto duration = route.values["duration"].get<json::Number>().value;
+
+        auto &leg = route.values["legs"].get<json::Array>().values.at(0).get<json::Object>();
+        auto &steps = leg.values["steps"].get<json::Array>();
+
+        for(int i=0; i < steps.values.size(); i++) {
+            auto &step = steps.values.at(i).get<json::Object>();
+            auto &maneuver = step.values["maneuver"].get<json::Object>();
+            std::cout << maneuver.values["type"].get<json::String>().value << ":" << maneuver.values["modifier"].get<json::String>().value << std::endl;
+        }
+
+
 
         // Warn users if extract does not contain the default Berlin coordinates from above
         if (distance == 0 or duration == 0)

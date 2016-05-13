@@ -31,3 +31,7 @@ find_package(Boost 1.49.0 COMPONENTS filesystem system thread REQUIRED)
 target_link_libraries(navigation ${LibOSRM_LIBRARIES} ${Boost_LIBRARIES})
 include_directories(SYSTEM ${LibOSRM_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 
+add_custom_command(TARGET navigation
+        COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/map $<TARGET_FILE_DIR:navigation>)
+
