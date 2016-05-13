@@ -10,6 +10,7 @@ project(navigation C CXX)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 ")
+set(SOURCE_FILES main.cpp)
 
 set(bitness 32)
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
@@ -23,15 +24,11 @@ if(WIN32 AND MSVC_VERSION LESS 1900)
     message(FATAL_ERROR "Building with Microsoft compiler needs Latest Visual Studio 2015 (Community or better)")
 endif()
 
-add_executable(navigation main.cpp)
+add_executable(navigation ${SOURCE_FILES})
 
 find_package(LibOSRM REQUIRED)
 find_package(Boost 1.49.0 COMPONENTS filesystem system thread REQUIRED)
 
 target_link_libraries(navigation ${LibOSRM_LIBRARIES} ${Boost_LIBRARIES})
-include_directories(SYSTEM ${LibOSRM_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
-
-add_custom_command(TARGET navigation
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/map $<TARGET_FILE_DIR:navigation>)
+include_directories(SYSTEM ${LibOSRM_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS} ${navigation_SOURCE_DIR}/include)
 
