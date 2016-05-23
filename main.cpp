@@ -13,6 +13,8 @@ int main(int argc, const char *argv[]) try
     }
 
     auto navigator = new Navigator(argv[1]);
+    navigator->addDestination(11.715238399999976, 48.1138828);
+    navigator->addCoordinate(11.378231048583984, 48.1789071002632);
     navigator->getRoute();
 }
 catch (const std::exception &e)

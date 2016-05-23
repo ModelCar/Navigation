@@ -37,8 +37,8 @@ void Navigator::getRoute() {
 
     // Route in monaco
     //TODO: check destination & history not empty
-    params.coordinates.push_back({osrm::util::FloatLongitude(11.378231048583984), osrm::util::FloatLatitude(48.1789071002632)});
-    params.coordinates.push_back({osrm::util::FloatLongitude(11.715238399999976), osrm::util::FloatLatitude(48.1138828)});
+    params.coordinates.push_back(coordinateHistory.back());
+    params.coordinates.push_back(destination);
     params.steps = true;
 
     // Response is in JSON format
@@ -86,4 +86,19 @@ void Navigator::getRoute() {
         std::cout << "Message: " << code << "\n";
     }
 }
+
+void Navigator::addDestination(double longitude, double latitude) {
+    Navigator::destination = {osrm::util::FloatLongitude(longitude), osrm::util::FloatLatitude(latitude)};
+}
+
+void Navigator::addCoordinate(double longitude, double latitude) {
+    Navigator::coordinateHistory.push_back({osrm::util::FloatLongitude(longitude), osrm::util::FloatLatitude(latitude)});
+}
+
+
+
+
+
+
+
 

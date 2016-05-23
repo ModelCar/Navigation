@@ -9,6 +9,8 @@ class Navigator {
 public:
     Navigator(std::string);
     void getRoute();
+    void addDestination(double, double);
+    void addCoordinate(double, double);
 };
 
 
