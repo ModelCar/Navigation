@@ -3,14 +3,15 @@
 
 
 class Navigator {
+private:
     std::vector<osrm::Coordinate> coordinateHistory;
     osrm::Coordinate destination;
     osrm::OSRM *osrm;
 public:
     Navigator(std::string);
     void getRoute();
-    void addDestination(double, double);
-    void addCoordinate(double, double);
+    void setDestination(double, double);
+    void setCoordinate(double, double);
 };
 
 

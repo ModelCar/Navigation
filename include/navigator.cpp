@@ -87,11 +87,12 @@ void Navigator::getRoute() {
     }
 }
 
-void Navigator::addDestination(double longitude, double latitude) {
+void Navigator::setDestination(double longitude, double latitude) {
     Navigator::destination = {osrm::util::FloatLongitude(longitude), osrm::util::FloatLatitude(latitude)};
 }
 
-void Navigator::addCoordinate(double longitude, double latitude) {
+void Navigator::setCoordinate(double longitude, double latitude) {
+    //TODO: only 10 coordinates in history
     Navigator::coordinateHistory.push_back({osrm::util::FloatLongitude(longitude), osrm::util::FloatLatitude(latitude)});
 }
 
