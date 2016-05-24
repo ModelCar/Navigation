@@ -2,7 +2,7 @@
 
 __Clone osrm-backend__
 ```
-git clone https://github.com/Project-OSRM/osrm-backend.git -b 5.0 \
+git clone https://github.com/Project-OSRM/osrm-backend.git -b 5.0
 ```
 __Download extracted map from here:__ http://drive.google.com/open?id=0By8LQ4_tjoxnZGtZNFJBQ2xSM1k
 

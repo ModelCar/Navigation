@@ -12,6 +12,8 @@ list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 ")
 set(SOURCE_FILES main.cpp)
 
+set(LibOSRM_INCLUDE_DIR osrm-backend)
+
 set(bitness 32)
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
     set(bitness 64)
@@ -30,5 +32,5 @@ find_package(LibOSRM REQUIRED)
 find_package(Boost 1.49.0 COMPONENTS filesystem system thread REQUIRED)
 
 target_link_libraries(navigation ${LibOSRM_LIBRARIES} ${Boost_LIBRARIES})
-include_directories(SYSTEM ${LibOSRM_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS} ${navigation_SOURCE_DIR}/include)
+include_directories(SYSTEM ${LibOSRM_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS} ${navigation_SOURCE_DIR}/include ${navigation_SOURCE_DIR}/osrm-backend/include)
 
