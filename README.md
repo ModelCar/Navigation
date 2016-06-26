@@ -1,25 +1,18 @@
 ## How-to run the project
 
-__Clone osrm-backend__
+__Clone dependencies__
 ```
-git clone https://github.com/Project-OSRM/osrm-backend.git -b 5.0
+git clone https://github.com/graphhopper/graphhopper.git
 ```
-__Download extracted map from here:__ http://drive.google.com/open?id=0By8LQ4_tjoxnZGtZNFJBQ2xSM1k
 
-
-## How-to build OSRM
-_Tested in 5.0. Should work in other versions._
-
-__Build OSRM (for MAC)__
-
-1. install packages: https://github.com/Project-OSRM/osrm-backend/wiki/Building-OSRM#mac-os-x-1071-1082
-2. install stxxl lib: `brew install libstxxl`
-3. build: https://github.com/Project-OSRM/osrm-backend/wiki/Building-OSRM#building
-
-__Download & extract the map__
+__Download the map__
 ```
 mkdir map && cd map
 wget http://download.geofabrik.de/europe/germany/bayern/oberbayern-latest.osm.pbf
-osrm-extract -p ../profiles/car.lua oberbayern-latest.osm.pbf
-osrm-contract oberbayern-latest.osrm
+```
+
+__To start the graphhopper__
+```
+cd graphhopper
+./graphhopper.sh web ../map/oberbayern-latest.osm.pbf
 ```
