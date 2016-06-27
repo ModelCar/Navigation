@@ -1,14 +1,8 @@
 ## How-to run the project
 
-__Clone dependencies__
+__Install all with addlibs.sh__
 ```
-git clone https://github.com/graphhopper/graphhopper.git
-```
-
-__Download the map__
-```
-mkdir map && cd map
-wget http://download.geofabrik.de/europe/germany/bayern/oberbayern-latest.osm.pbf
+sudo bash addlibs.sh
 ```
 
 __To start the graphhopper__
