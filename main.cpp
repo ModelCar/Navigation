@@ -14,17 +14,15 @@
 //#define LCD_D6  21              //Data pin 6
 //#define LCD_D7  14               //Data pin 7
 
-void showOnLcd(int lcd, std::string row1, std::string row2)
+void showOnLcd(int lcd, std::string sign, std::string bearing, std::string distance)
 {
 //    lcdClear(lcd);
 //    lcdPosition(lcd,0,0);           //Position cursor on the first line in the first column
-//    lcdPuts(lcd, "Maneuver:");
-//    lcdPosition(lcd,11,0);
-//    lcdPuts(lcd, row1.c_str());  //Print the text on the LCD at the current cursor postion
+//    lcdPuts(lcd, sign.c_str());
+//    lcdPosition(lcd,4,0);
+//    lcdPuts(lcd, bearing.c_str().substr(0, 5));  //Print the text on the LCD at the current cursor postion
 //    lcdPosition(lcd, 0, 1);
-//    lcdPuts(lcd, "Bearing:");
-//    lcdPosition(lcd, 11, 1);
-//    lcdPuts(lcd, row2.c_str().substr(0, 5));
+//    lcdPuts(lcd, distance.c_str());
 }
 
 int main(int argc, const char *argv[]) try

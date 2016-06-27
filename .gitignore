@@ -1,2 +1,5 @@
 build
 map
+curl
+graphhopper
+jsoncpp

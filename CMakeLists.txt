@@ -8,5 +8,5 @@ include_directories(include jsoncpp/dist)
 
 add_executable(navigation ${SOURCE_FILES})
 
-target_link_libraries(navigation CURL)
-#target_link_libraries(navigation CURL wiringPi wiringPiDev)
+target_link_libraries(navigation curl)
+#target_link_libraries(navigation curl wiringPi wiringPiDev) for led
