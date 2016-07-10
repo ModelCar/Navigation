@@ -1,44 +1,50 @@
 # Navigation system documentation
 
-### Requirements
+## Introduction
+
+
+## Requirements
+Libraries:
 * curl
 * jsoncpp
+
+Services:
 * gpsd
 * graphhopper
 
-### Installation
-__Install all with addlibs.sh__
+## Installation
+Installation of all requirements 
 ```
-sudo bash addlibs.sh
+sudo ./addlibs.sh
 ```
  
-### Usage
+## Usage
 
-__Run these scripts on the start of Raspberry Pi__
+### Background services
+Run these scripts on the start of Raspberry Pi
 
-Configure gps
+Configure gps service
 ```
 sudo ./setupgps.sh
 ```
- 
-To start the graphhopper
+
+Start the graphhopper
 ```
 ./rungraphhopper.sh
 ```
 
-__Add navigation library to your code__
-__Or compile and run the project__
+### Navigation service
+Add navigation library to your code or compile and run the project
 
 Specify the destination point:
-```
+```C
 auto nav = new Navigator();
 nav->setDestination(coordinates)
 ```
-
 coordinates is a struct with double fields latitude, longitude.
 
 Get next route step:
-```
+```C
 nav->getNextStep();
 ```
 return the instruction struct with parameters:
@@ -46,13 +52,13 @@ return the instruction struct with parameters:
 * double distance (meters) - distance to the next maneuver
 * int sign - next maneuver type:
 
-_Sign number explanation:_
-* 0: drive straight
+Sign numbers meaning:
+* 0: go straight
 * 2: trun right
-* 0: turn  lest
+* -2: turn  left
 * 4: finish
 
-### Links
+## Usefull links
 1. [GPS module info](http://www.waveshare.com/wiki/UART_GPS_NEO-6M)
 2. [GPSD JSON protocol description](http://www.catb.org/gpsd/gpsd_json.html)
 3. [Calculation formulas](http://www.movable-type.co.uk/scripts/latlong.html)
