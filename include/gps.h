@@ -6,8 +6,11 @@
 #define NAVIGATION_GPS_H
 
 
-class gps {
+#include "navigator.h"
 
+class GPS {
+public:
+    static coordinates getCurrentPosition();
 };
 
 

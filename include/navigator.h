@@ -11,7 +11,7 @@ struct coordinates {
 };
 
 struct Instruction {
-    float distance;
+    double distance;
     int sign;
     double bearing;
 };
@@ -20,15 +20,20 @@ class Navigator {
 private:
     coordinates destination;
     coordinates currentPosition;
+    //std::vector<Instruction> instructionList;
+    std::vector<coordinates> coordinatesList;
     Json::Value getJson(std::string);
-    coordinates getCurrentPosition();
-    std::vector<Instruction> getInstructions(Json::Value);
+    //std::vector<Instruction> getInstructions();
+    Instruction generateInstruction(int);
     std::vector<coordinates> getCoordinates(Json::Value jsonValue);
+    int isOnTheRoute(std::vector<coordinates>);
+    double getTurnAngle(double angleCar, double angleNext);
+    Json::Value getRouteUrl();
 public:
     Navigator();
     void setDestination(coordinates);
-    Json::Value getRoute();
     Instruction getNextStep();
+    static std::map<std::string, int> instructions;
 };
 
 

@@ -1,16 +1,16 @@
 #include<iostream>
-#include<iomanip>
 #include<cmath>
+#include "navigator.h"
 
-
-// Source: // http://w...content-available-to-author-only...o.uk/scripts/latlong.html
 
 static const double PI = 3.14159265358979323846, earthDiameterMeters = 6371.0 * 2 * 1000;
 
 double degreeToRadian (const double degree) { return (degree * PI / 180); };
 double radianToDegree (const double radian) { return (radian * 180 / PI); };
 
-double CoordinatesToAngle (double latitude1,
+
+//return compass bearing
+double CoordinatesToAngleInner (double latitude1,
                            const double longitude1,
                            double latitude2,
                            const double longitude2)
@@ -28,7 +28,15 @@ double CoordinatesToAngle (double latitude1,
   return (degree >= 0)? degree : (degree + 360);
 }
 
-double CoordinatesToMeters (double latitude1,
+//use coordinates struct
+double CoordinatesToAngle(coordinates c1, coordinates c2) {
+  return CoordinatesToAngleInner(c1.latitude, c1.longitude, c2.latitude, c2.longitude);
+}
+
+
+
+//return distance
+double CoordinatesToMetersInner (double latitude1,
                             double longitude1,
                             double latitude2,
                             double longitude2)
@@ -48,27 +56,10 @@ double CoordinatesToMeters (double latitude1,
 #endif
 }
 
-std::pair<double,double> CoordinateToCoordinate (double latitude,
-                                                 double longitude,
-                                                 double angle,
-                                                 double meters)
-{
-  latitude = degreeToRadian(latitude);
-  longitude = degreeToRadian(longitude);
-  angle = degreeToRadian(angle);
-  meters *= 2 / earthDiameterMeters;
-
-  using namespace std;
-  pair<double,double> coordinate;
-
-  coordinate.first = asin((sin(latitude) * cos(meters))
-                        + (cos(latitude) * sin(meters) * cos(angle)));
-  coordinate.second = longitude + atan2((sin(angle) * sin(meters) * cos(latitude)),
-                                        cos(meters) - (sin(latitude) * sin(coordinate.first)));
-
-  coordinate.first = radianToDegree(coordinate.first);
-  coordinate.second = radianToDegree(coordinate.second);
-
-  return coordinate;
+//use coordinates struct
+double CoordinatesToMeters(coordinates c1, coordinates c2) {
+  return CoordinatesToMetersInner(c1.latitude, c1.longitude, c2.latitude, c2.longitude);
 }
+
+
 
